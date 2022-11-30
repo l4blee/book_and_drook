@@ -12,7 +12,7 @@ RUN apt install g++ -y
 
 WORKDIR /book_drook/
 
-COPY requirments.txt /book_drook/
+COPY requirements.txt /book_drook/
 RUN pip install -r requirements.txt
 
 COPY ${SSL_PATH} /book_drook/certificates
