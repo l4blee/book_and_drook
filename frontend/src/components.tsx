@@ -1,5 +1,5 @@
 import ArrowForward from "@suid/icons-material/ArrowForward";
-import { Box, Button, Container, Typography } from "@suid/material";
+import { Box, Button, Container, TableCell, Typography } from "@suid/material";
 import { Component, For } from "solid-js";
 
 
@@ -61,5 +61,26 @@ const LibraryEntry: Component<{id: number, title: string, address: string, bookL
     )
 }
 
+const PlayBillEntry: Component = () => {
+    return (
+        <TableCell 
+            sx={{
+                fontSize: '25px', 
+                height: '320px',
+                width: '430px',
+                display: 'flex', 
+                flexDirection: 'column', 
+                alignItems: 'center', 
+                justifyContent: 'space-around',
+                borderRight: '3px solid black',
+                '&:last-child': {
+                    borderRight: 'none'
+                }
+        }}>
+            <Box sx={{height: '168px', width: '378px', bgcolor: '#D9D9D9'}}/>
+            лялялялляля
+        </TableCell>
+    )
+}
 
-export { LibraryEntry }
+export { LibraryEntry, PlayBillEntry }

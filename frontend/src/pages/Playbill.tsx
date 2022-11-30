@@ -1,5 +1,6 @@
 import { Box, Button, Container, Table, TableCell, TableRow, Typography } from "@suid/material";
 import { Component } from "solid-js";
+import { PlayBillEntry } from "../components";
 
 const Playbill: Component = () => {
     return (
@@ -41,40 +42,16 @@ const Playbill: Component = () => {
                 <Typography fontFamily={'Druzhok'} fontSize='80px'>Афиша</Typography>
                 <Table sx={{width: 'fit-content'}}>
                     <TableRow sx={{display: 'flex', flexDirection: 'row', width: 'fit-content', border: '3px solid black'}}>
-                        <TableCell sx={{fontSize: '25px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '3px solid black'}}>
-                            <Box sx={{height: '215px', width: '300px', bgcolor: '#D9D9D9'}}></Box>
-                            ляляляляляляялляляля
-                        </TableCell>
-                        <TableCell sx={{fontSize: '25px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '3px solid black'}}>
-                            <Box sx={{height: '215px', width: '300px', bgcolor: '#D9D9D9'}}></Box>
-                            ляляляляляляялляляля
-                        </TableCell>
-                        <TableCell sx={{fontSize: '25px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '3px solid black'}}>
-                            <Box sx={{height: '215px', width: '300px', bgcolor: '#D9D9D9'}}></Box>
-                            ляляляляляляялляляля
-                        </TableCell>
-                        <TableCell sx={{fontSize: '25px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                            <Box sx={{height: '215px', width: '300px', bgcolor: '#D9D9D9'}}></Box>
-                            ляляляляляляялляляля
-                        </TableCell>
+                        <PlayBillEntry/>
+                        <PlayBillEntry/>
+                        <PlayBillEntry/>
+                        <PlayBillEntry/>
                     </TableRow>
                     <TableRow sx={{display: 'flex', flexDirection: 'row', width: 'fit-content', border: '3px solid black', borderTop: 'none'}}>
-                        <TableCell sx={{fontSize: '25px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '3px solid black'}}>
-                            <Box sx={{height: '215px', width: '300px', bgcolor: '#D9D9D9'}}></Box>
-                            ляляляляляляялляляля
-                        </TableCell>
-                        <TableCell sx={{fontSize: '25px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '3px solid black'}}>
-                            <Box sx={{height: '215px', width: '300px', bgcolor: '#D9D9D9'}}></Box>
-                            ляляляляляляялляляля
-                        </TableCell>
-                        <TableCell sx={{fontSize: '25px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', borderRight: '3px solid black'}}>
-                            <Box sx={{height: '215px', width: '300px', bgcolor: '#D9D9D9'}}></Box>
-                            ляляляляляляялляляля
-                        </TableCell>
-                        <TableCell sx={{fontSize: '25px', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                            <Box sx={{height: '215px', width: '300px', bgcolor: '#D9D9D9'}}></Box>
-                            ляляляляляляялляляля
-                        </TableCell>
+                        <PlayBillEntry/>
+                        <PlayBillEntry/>
+                        <PlayBillEntry/>
+                        <PlayBillEntry/>
                     </TableRow>
                 </Table>
             </Container>
