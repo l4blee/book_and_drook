@@ -15,6 +15,7 @@ WORKDIR /book_drook/
 COPY requirments.txt /book_drook/
 RUN pip install -r requirements.txt
 
+COPY ${SSL_PATH} /book_drook/certificates
 COPY backend/ /book_drook/backend
 COPY frontend/dist/ /book_drook/frontend/dist
 
