@@ -13,7 +13,7 @@ RUN apt install g++ -y
 WORKDIR /book_drook/
 
 COPY requirments.txt /book_drook/
-RUN pip install -r requirments.txt
+RUN pip install -r requirements.txt
 
 COPY backend/ /book_drook/backend
 COPY frontend/dist/ /book_drook/frontend/dist
