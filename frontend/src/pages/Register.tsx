@@ -13,7 +13,7 @@ const Register: Component = () => {
     })
 
     const [formData, updateForm] = createSignal({
-        nickname: null,
+        login: null,
         password: null,
         password_repeat: null,
     })
@@ -35,7 +35,7 @@ const Register: Component = () => {
 
         const data = formData()
         const modifiedData = {
-            nickname: data.nickname,
+            login: data.login,
             password: data.password
         }        
 
@@ -148,7 +148,7 @@ const Register: Component = () => {
                             alignItems: 'end',
                             mt: '15px'
                     }}>
-                        <InputLabel for='password_repeat' required>Подтверждение</InputLabel>
+                        <InputLabel for='password_repeat' required>Повтор пароля</InputLabel>
                         <Input 
                             fullWidth 
                             id='password_repeat' 
