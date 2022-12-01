@@ -63,7 +63,8 @@ async def register(request: Request):
     user = UserModel(
         login=payload.login,
         hashed_password=hased_pwd,
-        salt=salt
+        salt=salt,
+        donated=0
     )
 
     request.ctx.db.insert_one(user.to_dict())

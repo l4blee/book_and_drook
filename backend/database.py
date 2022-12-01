@@ -15,19 +15,23 @@ class UserModel:
     hashed_password: bson.Binary
     salt: bson.Binary
 
+    donated: int = 0
+
     @classmethod
     def from_record(cls, record: dict):
         return cls(
             login=record.get('login'),
             hashed_password=record.get('hashed_password').encode('utf-8'),
             salt=record.get('salt').encode('utf-8'),
+            donated=record.get('donated', 0)
         )
     
     def to_dict(self) -> dict:
         return {
             'login': self.login,
             'hashed_password': self.hashed_password.decode('utf-8'),
-            'salt': self.salt.decode('utf-8')
+            'salt': self.salt.decode('utf-8'),
+            'donated': self.donated
         }
 
     def validate(self, password: bytes) -> bool:
