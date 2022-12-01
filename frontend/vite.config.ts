@@ -6,7 +6,8 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
-      '/api/get_data': 'http://localhost:5000'
+      '/api/get_data': 'http://localhost:5000',
+      '/auth/register': 'http://localhost:5000'
     }
   },
   build: {

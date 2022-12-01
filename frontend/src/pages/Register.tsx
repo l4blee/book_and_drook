@@ -37,7 +37,8 @@ const Register: Component = () => {
         const modifiedData = {
             login: data.login,
             password: data.password
-        }        
+        }
+        
 
         fetch(
             '/auth/register',
