@@ -1,9 +1,16 @@
-import { Box, Button, Container } from "@suid/material";
-import { Component } from "solid-js";
-import { LibraryEntry } from "../components";
-import nekrasova from '../assets/nekrasova.png'
+import { Box, Container } from "@suid/material";
+import { Component, onMount } from "solid-js";
+import { LibraryEntry, PeripheryNavigation } from "../components";
+import nekrasova from '../assets/libraries/nekrasova.svg'
+import bazhova from '../assets/libraries/bazhova.svg'
+import bianki from '../assets/libraries/bianki.svg'
+
 
 const Libraries: Component = () => {
+    onMount(() => {
+        document.title = 'Book и друг | Библиотеки'
+    })
+
     return (
         <Box sx={{
             width: '100vw',
@@ -12,21 +19,7 @@ const Libraries: Component = () => {
             justifyContent: 'center',
             alignItems: 'center'
         }}>
-            <Box 
-                component='header'
-                sx={{
-                    display: 'flex', 
-                    alignItems: 'end', 
-                    width: '100%',
-                    justifyContent: 'space-between', 
-                    p: '60px 85px', 
-                    textAlign: 'center'
-                }}>
-                <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem',fontFamily: 'Actay', fontSize: '25px', mr: '79px'}} href='/'>Главная</Button>
-                <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem',fontFamily: 'Actay', fontSize: '25px', mr: '68px'}} href='/monster'>Книжный<br/>монстр</Button>
-                <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem', fontFamily: 'Actay', fontSize: '25px', mr: '43px'}} href='/libraries'>Библиотеки</Button>
-                <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem', fontFamily: 'Actay', fontSize: '25px'}} href='/playbill'>Афиша</Button>
-            </Box>
+            <PeripheryNavigation/>
             <Container
                 maxWidth={false}
                 sx={{
@@ -35,34 +28,43 @@ const Libraries: Component = () => {
                     padding: '0 !important'
                 }}
             >
-                <LibraryEntry 
-                    id={1}
-                    title='Библиотека им. Н.А. Некрасова' 
-                    address='Адрес: ул. Римского-Корсакова, 5/1, Новосибирск'
+                <LibraryEntry
+                    title='Библиотека им. Н. А. Некрасова' 
+                    address='ул. Римского-Корсакова, 5/1, Новосибирск'
                     bookList={[
-                        '1. "Мастер и Маргарита" Михаил Булгаков.', 
-                        '2. "Евгений Онегин" Александр Пушкин.',
-                        '3. "Преступление и Наказание" Федор Достоевский.',
-                        '4. "Война и мир" Лев Толстой.',
-                        '5. "Маленький Принц" Антуан де Сент-Экзюпери.',
-                        '6. "Герой Нашего Времени" Михаил Лермонтов.',
-                        '41. "Гордость и Предубеждение" Джейн Остин.' ,
-                        '42. "Два Капитана" Вениамин Каверин.',
-                        '43. "Над Кукушкиным Гнездом" Кен Кизи.',
-                        '44. "Трилогия о незнайке" Николай Носов.',
-                        '45. "Обломов" Иван Гончаров.',
-                        '46. "Понедельник Начинается в Субботу" Аркадий и Борис Стругацкие.',
-                        '47. "Приключения Тома Сойера" Марк Твен.',
-                        '48. "Архипелаг Гулаг" Александр Солженицын.',
-                        '49. "Великий Гэтсби" Фрэнсис Скотт Фицджеральд (Досто).'
+                        '1. Степнова М. "Сад" (ещё можно и "Перепёлку", "Там, внутри", "Роман", "Эфир")', 
+                        '2. Диккенс Ч. "Рождественская песнь" (в прозе)',
+                        '3. Хармон Э. "Босиком по траве"',
+                        '4. Кард О.-С. "Игра Эндера"',
+                        '5. Громыко О. серия "Профессия: ведьма" - кн. "Ведьма-хранительница"',
+                        '6. Бакман Ф. "Вторая жизнь Уве"',
+                        '7. Коллинз с. из трилогии "Голодные игры" - кн. "Сойка-пересмешница"' ,
+                        '8. Кинг С. "Зеленая миля"',
+                        '9. Оуэнс Д. "Там, где раки поют"',
+                        '10. Михаэлидес А. «Безмолвный пациент»'
                     ]}
                     imgSrc={nekrasova}
                 />
-                <Box sx={{width: '100vw', height: '100px', bgcolor: '#E15F41'}}></Box>
-                <LibraryEntry 
-                    id={2}
-                    title='Библиотека им. Н.А. Некрасова' 
-                    address='Адрес: ул. Римского-Корсакова, 5/1, Новосибирск'
+                <LibraryEntry
+                    title='Библиотека им. П.П. Бажова' 
+                    address='ул. Новогодняя, 11, Новосибирск'
+                    bookList={[
+                        '1. Степнова М. "Сад" (ещё можно и "Перепёлку", "Там, внутри", "Роман", "Эфир")', 
+                        '2. Диккенс Ч. "Рождественская песнь" (в прозе)',
+                        '3. Хармон Э. "Босиком по траве"',
+                        '4. Кард О.-С. "Игра Эндера"',
+                        '5. Громыко О. серия "Профессия: ведьма" - кн. "Ведьма-хранительница"',
+                        '6. Бакман Ф. "Вторая жизнь Уве"',
+                        '7. Коллинз с. из трилогии "Голодные игры" - кн. "Сойка-пересмешница"' ,
+                        '8. Кинг С. "Зеленая миля"',
+                        '9. Оуэнс Д. "Там, где раки поют"',
+                        '10. Михаэлидес А. «Безмолвный пациент»'
+                    ]}
+                    imgSrc={bazhova}
+                />
+                <LibraryEntry
+                    title='Библиотека им. В.В. Бианки' 
+                    address='ул. 9 Гвардейской Дивизии, 18, Новосибирск'
                     bookList={[
                         '1. "Мастер и Маргарита" Михаил Булгаков.', 
                         '2. "Евгений Онегин" Александр Пушкин.',
@@ -80,7 +82,7 @@ const Libraries: Component = () => {
                         '48. "Архипелаг Гулаг" Александр Солженицын.',
                         '49. "Великий Гэтсби" Фрэнсис Скотт Фицджеральд (Досто).'
                     ]}
-                    imgSrc={nekrasova}
+                    imgSrc={bianki}
                 />
             </Container>
         </Box>

@@ -7,6 +7,7 @@ import Dismiss from "solid-dismiss";
 import books from '../assets/books.svg'
 import mouse from '../assets/mouse.svg'
 import { getAuth } from "../utils";
+import { NavigationButton } from "../components";
 
 
 const Index: Component = () => {
@@ -37,27 +38,27 @@ const Index: Component = () => {
                         width: 'fit-content', 
                         height: 'fit-content', 
                         m: 0,
-                        mt: '82px',
-                        ml: '131px'
+                        mt: '60px',
+                        ml: '5%'
                     }}
                 >
                     <Typography 
                         children={'book'}
                         sx={{
-                            fontSize: '160px',
+                            fontSize: '8.3vw',
                             fontFamily: 'Druzhok',
                             color: '#E15F41',
-                            lineHeight: '123px',
+                            lineHeight: '80%',
                             letterSpacing: '0.1rem'
                         }}
                     />
                     <Typography 
                         children={'и\xa0\xa0друг'}
                         sx={{
-                            fontSize: '160px',
+                            fontSize: '8.3vw',
                             fontFamily: 'Druzhok',
                             color: '#000000',
-                            lineHeight: '123px',
+                            lineHeight: '80%',
                             letterSpacing: '0.1rem'
                         }}
                     />
@@ -66,18 +67,20 @@ const Index: Component = () => {
                         sx={{
                             fontFamily: 'Actay',
                             color: '#000000',
-                            fontSize: '30px',
-                            lineHeight: '60px',
+                            fontSize: '1.5vw',
+                            lineHeight: '180%',
                             fontStyle: 'italic',
                             letterSpacing: '0.1rem'
                         }}
                     />
                     <Box 
-                        children={<img src={mouse} width='150px' height='150px'/>}
+                        children={<img src={mouse} width='100%' height='100%'/>}
                         sx={{
                             position: 'absolute',
-                            top: '-28px',
-                            left: '435px'
+                            width: '8vw',
+                            height: '8vw',
+                            top: '-10%',
+                            left: '66%'
                         }}
                     />
                 </Container>
@@ -88,10 +91,10 @@ const Index: Component = () => {
                         display: 'flex',
                         position: 'relative',
                         flexDirection: 'column',
-                        justifyContent: 'end',
-                        ml: '95px',
-                        mb: '90px',
-                        mr: '85px'
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        ml: '5%',
+                        mr: '5%'
                     }}
                 >
                     <IconButton 
@@ -99,10 +102,10 @@ const Index: Component = () => {
                         children={<Person/>}
                         sx={{
                             position: 'absolute',
-                            right: '24px',
-                            top: '50px',
-                            width: '80px',
-                            height: '80px',
+                            right: '5%',
+                            top: '10%',
+                            width: '4.5vw',
+                            height: '4.5vw',
                             bgcolor: '#D9D9D9'
                         }}
                     />
@@ -124,8 +127,7 @@ const Index: Component = () => {
                                     alignItems: 'end',
                                     zIndex: 1,
                                     right: 0
-                                }}
-                            >
+                            }}>
                                 {
                                 login.latest?.status !== 401 ?
                                 <Button fullWidth sx={{borderRadius: '15px', color: 'red'}} href='/auth/logout'><LogoutOutlined/>Выйти</Button>
@@ -135,23 +137,32 @@ const Index: Component = () => {
                             </Box>
                         </Dismiss>
                     </Show>
-                    <Box sx={{display: 'flex', alignItems: 'end', justifyContent: 'space-between', p: '0 20px', textAlign: 'center'}}>
-                        <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem',fontFamily: 'Actay', fontSize: '25px', mr: '79px'}} href='/'>Главная</Button>
-                        <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem',fontFamily: 'Actay', fontSize: '25px', mr: '68px'}} href='/monster'>Книжный<br/>монстр</Button>
-                        <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem', fontFamily: 'Actay', fontSize: '25px', mr: '43px'}} href='/libraries'>Библиотеки</Button>
-                        <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem', fontFamily: 'Actay', fontSize: '25px'}} href='/playbill'>Афиша</Button>
+                    <Box 
+                        sx={{
+                            display: 'flex', 
+                            alignItems: 'end', 
+                            justifyContent: 'space-between', 
+                            width: '100%',
+                            mt: '3%',
+                            p: '0 %'
+                    }}>
+                        <NavigationButton href='/'>Главная</NavigationButton>
+                        <NavigationButton href='/monster'>Книжный<br/>монстр</NavigationButton>
+                        <NavigationButton href='/libraries'>Библиотеки</NavigationButton>
+                        <NavigationButton href='/playbill'>Афиша</NavigationButton>
                     </Box>
                     <Input 
                         placeholder="Поиск..."
                         fullWidth
                         disableUnderline
                         sx={{
-                            height: '54px',
+                            height: '2.5vw',
                             borderRadius: '30px',
-                            mt: '15px',
+                            fontSize: '1vw',
+                            mt: '2%',
                             fontFamily: 'Actay',
                             letterSpacing: '0.1rem',
-                            padding: '0 30px',
+                            padding: '0 3%',
                             bgcolor: '#63CDDA60'
                         }}
                     />
@@ -159,7 +170,8 @@ const Index: Component = () => {
             </Container>
             <Box 
                 sx={{
-                    display: 'flex'
+                    display: 'flex',
+                    justifyContent: 'center'
                 }}
             >
                 <img src={books}/>

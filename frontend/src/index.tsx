@@ -7,10 +7,7 @@ import { Router } from '@solidjs/router';
 import { createTheme, ThemeProvider } from '@suid/material';
 
 const theme = createTheme({
-   typography: {
-    'fontFamily': 'Montserrat',
-    'fontWeightRegular': 400
-  }
+  
 })
 
 render(

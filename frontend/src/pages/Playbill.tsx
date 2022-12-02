@@ -1,8 +1,12 @@
-import { Box, Button, Container, Table, TableCell, TableRow, Typography } from "@suid/material";
-import { Component } from "solid-js";
-import { PlayBillEntry } from "../components";
+import { Box, Container, Table, TableRow, Typography } from "@suid/material";
+import { Component, onMount } from "solid-js";
+import { PeripheryNavigation, PlayBillEntry } from "../components";
 
 const Playbill: Component = () => {
+    onMount(() => {
+        document.title = 'Book и друг | Библиотеки'
+    })
+    
     return (
         <Box sx={{
             width: '100vw',
@@ -12,22 +16,7 @@ const Playbill: Component = () => {
             justifyContent: 'center',
             alignItems: 'center'
         }}>
-            <Box 
-                component='header'
-                sx={{
-                    display: 'flex', 
-                    alignItems: 'end', 
-                    width: '100%',
-                    justifyContent: 'space-between', 
-                    mt: '60px',
-                    p: '0 85px', 
-                    textAlign: 'center'
-                }}>
-                <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem',fontFamily: 'Actay', fontSize: '25px', mr: '79px'}} href='/'>Главная</Button>
-                <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem',fontFamily: 'Actay', fontSize: '25px', mr: '68px'}} href='/monster'>Книжный<br/>монстр</Button>
-                <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem', fontFamily: 'Actay', fontSize: '25px', mr: '43px'}} href='/libraries'>Библиотеки</Button>
-                <Button sx={{height: '80px', color: '#000', lineHeight: '25px', letterSpacing: '0.1rem', fontFamily: 'Actay', fontSize: '25px'}} href='/playbill'>Афиша</Button>
-            </Box>
+            <PeripheryNavigation/>
             <Container
                 maxWidth={false}
                 sx={{
@@ -39,7 +28,7 @@ const Playbill: Component = () => {
                     mt: '10px'
                 }}
             >
-                <Typography fontFamily={'Druzhok'} fontSize='80px'>Афиша</Typography>
+                <Typography fontFamily={'Druzhok'} fontSize='5vw'>Афиша</Typography>
                 <Table sx={{width: 'fit-content'}}>
                     <TableRow sx={{display: 'flex', flexDirection: 'row', width: 'fit-content', border: '3px solid black'}}>
                         <PlayBillEntry/>
