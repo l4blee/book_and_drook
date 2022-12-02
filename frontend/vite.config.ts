@@ -8,7 +8,9 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api/get_data': 'http://localhost:5000',
-      '/auth/register': 'http://localhost:5000'
+      '/auth/register': 'http://localhost:5000',
+      '/auth/login': 'http://localhost:5000',
+      '/auth/logout': 'http://localhost:5000'
     }
   },
   build: {

@@ -2,19 +2,23 @@ import { Box, Button, Container, Input, Typography, IconButton } from "@suid/mat
 import Person from "@suid/icons-material/Person";
 import LogoutOutlined from "@suid/icons-material/LogoutOutlined";
 import LoginOutlined from "@suid/icons-material/LoginOutlined";
-import { Component, createSignal, Show } from "solid-js";
+import { Component, createEffect, createSignal, Show } from "solid-js";
 import Dismiss from "solid-dismiss";
 import books from '../assets/books.svg'
 import mouse from '../assets/mouse.svg'
-import { getAuth } from "../utils";
+import { getData } from "../utils";
 import { NavigationButton } from "../components";
 
 
 const Index: Component = () => {
     var dropdownButton: HTMLButtonElement | undefined
     const [dropOpen, setDropOpen] = createSignal(false)
-    const login = getAuth()
+    const login = getData()
 
+    createEffect(() => {
+        console.log(login())       
+    })
+    
     return (
         <Box sx={{position: 'relative'}}>
             <Container 
@@ -109,7 +113,7 @@ const Index: Component = () => {
                             bgcolor: '#D9D9D9'
                         }}
                     />
-                    <Show when={!login.loading}>
+                    <Show when={login.state === 'ready'}>
                         <Dismiss
                             menuButton={dropdownButton}
                             open={dropOpen}
@@ -118,7 +122,7 @@ const Index: Component = () => {
                             <Box 
                                 sx={{
                                     position: 'absolute',
-                                    width: '150px',
+                                    width: '8vw',
                                     borderRadius: '15px',
                                     boxShadow: '#00000029 0 0 25px',
                                     bgcolor: '#fff',
@@ -126,13 +130,17 @@ const Index: Component = () => {
                                     flexDirection: 'column',
                                     alignItems: 'end',
                                     zIndex: 1,
-                                    right: 0
+                                    right: '3%',
+                                    top: '35%'
                             }}>
                                 {
-                                login.latest?.status !== 401 ?
-                                <Button fullWidth sx={{borderRadius: '15px', color: 'red'}} href='/auth/logout'><LogoutOutlined/>Выйти</Button>
-                                :
-                                <Button fullWidth sx={{borderRadius: '15px'}} href='/login'><LoginOutlined/>Войти</Button>
+                                    login()?.message !== 'unauth' ?
+                                    <Box sx={{display: 'flex', width: '100%', flexDirection: 'column'}}>
+                                        <Typography sx={{fontSize: '1vw', width: '100%', textAlign: 'center', mt: '1%'}}>{login()?.nickname}</Typography>
+                                        <Button fullWidth sx={{borderRadius: '15px', color: 'red', fontSize: '0.8vw'}} href='/auth/logout'><LogoutOutlined fontSize='large'/>Выйти</Button>
+                                    </Box>
+                                    :
+                                    <Button fullWidth sx={{borderRadius: '15px', fontSize: '0.8vw'}} href='/login'><LoginOutlined/>Войти</Button>
                                 }
                             </Box>
                         </Dismiss>

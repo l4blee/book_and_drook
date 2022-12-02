@@ -17,4 +17,4 @@ async def get_data(request):
         )
     
     user = request.ctx.user
-    return json({'login': user.login, 'donated': user.donated})
+    return json({'nickname': user.login, 'donated': user.donated})

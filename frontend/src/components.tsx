@@ -110,6 +110,7 @@ const NavigationButton: Component<{children: JSX.Element, href: string}> = ({chi
                 lineHeight: '100%', 
                 letterSpacing: '0.1rem',
                 fontFamily: 'Actay',
+                textAlign: 'center'
             }} 
             href={href}
         >

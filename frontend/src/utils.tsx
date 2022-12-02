@@ -1,5 +1,11 @@
-import { createResource } from "solid-js";
+import { createResource, Resource } from "solid-js";
 
-export function getAuth() {
-    return createResource(async () => await fetch('/api/get_data', {method: 'POST'}))[0]
+interface Data {
+    message: string | undefined,
+    nickname: string,
+    donated: number
+}
+
+export function getData() : Resource<Data> {
+    return createResource(async () => (await fetch('/api/get_data', {method: 'POST'})).json())[0]
 }
