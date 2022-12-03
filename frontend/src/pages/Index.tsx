@@ -2,7 +2,7 @@ import { Box, Button, Container, Input, Typography, IconButton } from "@suid/mat
 import Person from "@suid/icons-material/Person";
 import LogoutOutlined from "@suid/icons-material/LogoutOutlined";
 import LoginOutlined from "@suid/icons-material/LoginOutlined";
-import { Component, createEffect, createSignal, Show } from "solid-js";
+import { Component, createSignal, Show } from "solid-js";
 import Dismiss from "solid-dismiss";
 import books from '../assets/books.svg'
 import mouse from '../assets/mouse.svg'
@@ -14,10 +14,6 @@ const Index: Component = () => {
     var dropdownButton: HTMLButtonElement | undefined
     const [dropOpen, setDropOpen] = createSignal(false)
     const login = getData()
-
-    createEffect(() => {
-        console.log(login())       
-    })
     
     return (
         <Box sx={{position: 'relative'}}>

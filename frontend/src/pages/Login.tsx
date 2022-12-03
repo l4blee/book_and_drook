@@ -17,12 +17,23 @@ const Login: Component = () => {
 
     function onSubmit(event: Event) {
         event.preventDefault()
+
+        let origin = window.location.search.substring(1).split('=')[1]
+        let modifiedData = undefined
+        if (origin) {
+            modifiedData = {
+                ...formData(),
+                origin: origin
+            }
+        } else {
+            modifiedData = formData()
+        }
         
         fetch(
             '/auth/login',
             {
                 method: 'POST',
-                body: JSON.stringify(formData()),
+                body: JSON.stringify(modifiedData),
                 headers: {
                     'Content-Type': 'application/json'
                 }

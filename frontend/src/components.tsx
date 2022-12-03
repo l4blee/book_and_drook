@@ -1,6 +1,8 @@
+import Info from "@suid/icons-material/Info";
 import ArrowForward from "@suid/icons-material/ArrowForward";
-import { Box, Button, Container, TableCell, Typography } from "@suid/material";
+import { Box, Button, Container, IconButton, TableCell, Typography } from "@suid/material";
 import { Component, For, JSX } from "solid-js";
+import location from './assets/location.svg'
 
 
 const LibraryEntry: Component<{title: string, address: string, bookList: Array<string>, imgSrc: string}> =
@@ -33,16 +35,6 @@ const LibraryEntry: Component<{title: string, address: string, bookList: Array<s
                             <Typography fontFamily='Actay' fontSize='2.5vw' lineHeight='100%' children={'Поддержать'}/>
                             <ArrowForward sx={{fontSize: '4vw'}}/>
                         </Button>
-                        <Typography
-                            sx={{
-                                fontSize: '0.7vw',
-                                ml: '20%',
-                                mr: '5%',
-                                mt: '1%',
-                                fontStyle: 'italic'
-                        }}>
-                            Укажите в комментариях к переводу библиотеку, которую вы хотите поддержать, чтобы мы могли купить для неё книги
-                        </Typography>
                     </Box>
                 </Container>
                 <Container 
@@ -139,4 +131,21 @@ const PeripheryNavigation: Component = () => {
     )
 }
 
-export { LibraryEntry, PlayBillEntry, NavigationButton, PeripheryNavigation }
+const LocationBar: Component<{amount: number, id: number}> = ({amount, id}) => {
+    return (
+        <Box sx={{
+            display: 'flex',
+            position: 'relative',
+            height: '14vw',
+            flexDirection: 'column',
+            alignItems: 'center'
+        }}>
+            <IconButton sx={{position: 'absolute', right: '25%', top: '-5%', p: 0}} children={<Info sx={{fontSize: '2.5vw', color: '#FFD93B'}}/>}/>
+            <Box children={id} sx={{position: 'absolute', fontSize: '3vw', fontFamily: 'Actay', top: '15%'}}/>
+            <img height='100%' src={location}/>
+            <Typography fontFamily='Actay' mt='12.5%' fontSize='1.5vw'>{amount} руб</Typography>
+        </Box>
+    )
+}
+
+export { LibraryEntry, PlayBillEntry, NavigationButton, PeripheryNavigation, LocationBar }

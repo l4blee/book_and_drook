@@ -7,6 +7,7 @@ const Register = lazy(() => import('./pages/Register'))
 const Monster = lazy(() => import('./pages/Monster'))
 const Playbill = lazy(() => import('./pages/Playbill'))
 const Libraries = lazy(() => import('./pages/Libraries'))
+const Support = lazy(() => import('./pages/Support'))
 
 const App: Component = () => {  
   return (
@@ -17,6 +18,7 @@ const App: Component = () => {
       <Route path='/monster' component={Monster}/>
       <Route path='/playbill' component={Playbill}/>
       <Route path='/libraries' component={Libraries}/>
+      <Route path='/support' component={Support}/>
     </Routes>
   );
 };

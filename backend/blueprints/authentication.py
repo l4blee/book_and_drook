@@ -18,13 +18,16 @@ class AuthenticationPayload:
     login: str
     password: str
 
+    origin: str
+
     @classmethod
     def from_request(cls, request):
         data = request.json
 
         return cls(
             login=data.get('login'),
-            password=data.get('password')
+            password=data.get('password'),
+            origin='/' + data.get('origin', '')
         )
 
 
@@ -38,7 +41,7 @@ async def login(request: Request):
     if record is not None:
         user = UserModel.from_record(record)
         if user.validate(payload.password.encode('utf-8')):
-            response = redirect('/')
+            response = redirect(payload.origin)
             response.cookies['session'] = request.ctx.login_manager.login_user(user)
             response.cookies['session']['max-age'] = request.app.config.COOKIE_MAX_AGE
 
