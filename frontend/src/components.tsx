@@ -1,8 +1,9 @@
 import Info from "@suid/icons-material/Info";
 import ArrowForward from "@suid/icons-material/ArrowForward";
 import { Box, Button, Container, IconButton, TableCell, Typography } from "@suid/material";
-import { Component, For, JSX } from "solid-js";
+import { Component, createSignal, For, JSX } from "solid-js";
 import location from './assets/location.svg'
+import Dismiss from "solid-dismiss";
 
 
 const LibraryEntry: Component<{title: string, address: string, bookList: Array<string>, imgSrc: string}> =
@@ -131,7 +132,10 @@ const PeripheryNavigation: Component = () => {
     )
 }
 
-const LocationBar: Component<{amount: number, id: number}> = ({amount, id}) => {
+const LocationBar: Component<{amount: number, id: number, tooltip: string}> = ({amount, id, tooltip}) => {
+    var dropdownButton: HTMLButtonElement | undefined
+    const [open, setOpen] = createSignal(false)
+
     return (
         <Box sx={{
             display: 'flex',
@@ -140,7 +144,37 @@ const LocationBar: Component<{amount: number, id: number}> = ({amount, id}) => {
             flexDirection: 'column',
             alignItems: 'center'
         }}>
-            <IconButton sx={{position: 'absolute', right: '25%', top: '-5%', p: 0}} children={<Info sx={{fontSize: '2.5vw', color: '#FFD93B'}}/>}/>
+            <IconButton 
+                ref={dropdownButton}
+                sx={{
+                    position: 'absolute', 
+                    right: '25%', 
+                    top: '-5%', 
+                    p: 0
+                }} 
+                children={<Info sx={{fontSize: '2.5vw', color: '#FFD93B'}}/>}
+            />
+            <Dismiss
+                menuButton={dropdownButton}
+                open={open}
+                setOpen={setOpen}
+            >
+                <Box sx={{
+                    position: 'absolute',
+                    borderRadius: '10px',
+                    width: 'fit-content',
+                    display: 'flex',
+                    alignItems: 'center',
+                    p: '0.3vw',
+                    boxShadow: '#00000029 0 0 25px',
+                    top: '15%',
+                    transform: 'translate(10%, 0)',
+                    bgcolor:'#fff',
+                    zIndex: 1
+                }}>
+                    <Typography fontFamily='Actay' fontSize='1vw' textAlign='center'>{tooltip}</Typography>
+                </Box>
+            </Dismiss>
             <Box children={id} sx={{position: 'absolute', fontSize: '3vw', fontFamily: 'Actay', top: '15%'}}/>
             <img height='100%' src={location}/>
             <Typography fontFamily='Actay' mt='12.5%' fontSize='1.5vw'>{amount} руб</Typography>

@@ -94,10 +94,10 @@ const Monster: Component = () => {
                             right: '-5%',
                             zIndex: 1
                         }}>
-                            <LocationBar amount={1000} id={1}/>
-                            <LocationBar amount={2300} id={2}/>
-                            <LocationBar amount={3600} id={3}/>
-                            <LocationBar amount={5000} id={4}/>
+                            <LocationBar amount={1000} id={1} tooltip='Фирменный сувенир Book и Друг'/>
+                            <LocationBar amount={2300} id={2} tooltip='Билет в театр "Глобус" '/>
+                            <LocationBar amount={3600} id={3} tooltip='5 любых книг из каталога Book24 '/>
+                            <LocationBar amount={5000} id={4} tooltip='Закрытая экскурсия в архивы ГПНТБ'/>
                         </Box>
                         <Box sx={{bgcolor: '#ACCDAA', width: percentage() - 0.03, height: '90%', position: 'absolute', left: '1.6%', borderRadius: '0 10vw 10vw 0', border: '2px solid'}}></Box>
                         <img width='100%' height='100%' style='z-index: 0' src={book}/>
@@ -111,11 +111,12 @@ const Monster: Component = () => {
                         width: '100%',
                         alignItems: 'center',
                         justifyContent: 'end',
-                        pb: '1vw',
-                        pr: '2vw'
+                        position: 'absolute',
+                        bottom: '1vw',
+                        right: '1vw'
                 }}>
                     <Box width='5vw'><img src={hungry} width='100%'/></Box>
-                    <Typography fontFamily='Actay' fontSize='2vw'>Накорми монстра, получи подарки<br/> и помоги библиотекам всесте с нами</Typography>
+                    <Typography fontFamily='Actay' fontSize='2vw'>Накорми монстра, получи подарки<br/> и помоги библиотекам вместе с нами</Typography>
                 </Box>
             </Container>
         </Box>

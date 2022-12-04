@@ -1,7 +1,10 @@
 import { Box, Typography } from "@suid/material"
 import { Component } from "solid-js"
+import { getData } from "../utils"
 
 const Support: Component = () => {
+    const data = getData()
+
     return (
         <Box sx={{
             width: '100vw',
@@ -14,7 +17,7 @@ const Support: Component = () => {
                 Укажите в комментариях к переводу <span style='color: red'>библиотеку</span>, которую вы хотите поддержать, 
                 чтобы мы могли купить для неё книги
                 <br/>
-                А также свой <span style='color: red'>логин</span> для входа на сайт, 
+                А также свой <span style='color: red'>логин ({data() && data()?.nickname})</span> для входа на сайт, 
                 чтобы мы могли Вас идентифицировать.
             </Typography> 
         </Box>
