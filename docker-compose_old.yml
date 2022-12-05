@@ -1,0 +1,23 @@
+version: '3.7'
+services:
+  server:
+    build: .
+    env_file:
+      - .env
+    ports:
+      - 80:80
+    volumes:
+      - ./data/certbot/certs/:/var/certs
+      - ./certbot/letsencrypt/:/var/www/letsencrypt
+    depends_on:
+      - certbot
+  certbot:
+    image: certbot/certbot:arm64v8-nightly
+    volumes:
+      - ./data/certbot/certs:/var/certs
+      - ./certbot/letsencrypt/:/var/www/letsencrypt
+    command: certonly --standalone --non-interactive --agree-tos -d bookanddroog.tk -d www.bookanddroog.tk -m l4blee@yandex.ru
+
+networks:
+    default:
+      driver: bridge
