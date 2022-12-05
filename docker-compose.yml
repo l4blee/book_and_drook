@@ -5,7 +5,7 @@ services:
     ports:
       - 5000:5000
     restart: unless-stopped
-  webserver:
+  nginx:
     image: arm64v8/nginx:latest
     ports:
       - 80:80
