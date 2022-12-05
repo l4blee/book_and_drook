@@ -20,6 +20,7 @@ services:
       - sanic
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
   certbot:
+    restart: unless-stopped
     image: certbot/certbot:arm64v8-latest
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
