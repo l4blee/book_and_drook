@@ -1,7 +1,5 @@
-import os
 from sanic import Blueprint
-from sanic.response import file, redirect
-from sanic.log import logger
+from sanic.response import file, redirect, text
 
 bp = Blueprint(
     'main',
@@ -12,12 +10,10 @@ bp = Blueprint(
 @bp.route('/<path:path>')
 async def index(request, path: str = None):
     if path and path.startswith('.well-known/acme-challenge'):
-        # index = path.index('acme-challenge') + 15
-        # token = path[index:]
-        # return redirect(f'http://validation.acme.com/.well-known/acme-challenge/{token}')
-        logger.info(os.listdir('/var/www/letsencrypt'))
-        logger.info(os.listdir('/var/certs'))
-
+        index = path.index('acme-challenge') + 15
+        token = path[index:]
+        return text(token)
+    
     if path in ['monster', 'libraries'] and request.ctx.user is None:
         return redirect(f'/login?origin={path}')
 
