@@ -71,24 +71,44 @@ const LibraryEntry: Component<{title: string, address: string, bookList: Array<s
     )
 }
 
-const PlayBillEntry: Component = () => {
+const PlayBillEntry: Component<{date: string, time?: string, img: string, title: string, place: string}> = 
+ ({date, time, img, title, place}) => {
     return (
         <TableCell 
             sx={{
                 fontSize: '1.2vw', 
+                p: '10px 0',
                 height: '17vw',
                 width: '22.5vw',
                 display: 'flex', 
                 flexDirection: 'column', 
                 alignItems: 'center', 
-                justifyContent: 'space-around',
+                justifyContent: 'space-between',
                 borderRight: '3px solid black',
                 '&:last-child': {
                     borderRight: 'none'
                 }
         }}>
-            <Box sx={{height: '11vw', width: '20vw', bgcolor: '#D9D9D9'}}/>
-            лялялялляля
+            <Box sx={{display: 'flex'}}>
+                <Typography sx={{fontSize: '1.5vw', fontFamily: 'Actay'}} children={date}/>
+                {time && <Typography sx={{color: '#E15F41', ml: '0.5vw', fontSize: '1.5vw', fontFamily: 'Actay'}} children={time}/>}
+            </Box>
+            <Box sx={{
+                height: '11vw', 
+                width: '20vw',
+                backgroundImage: `url(${img})`,
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                backgroundSize: '20vw',
+            }}/>
+            <Box sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center'
+            }}>
+                <Typography sx={{fontFamily: 'Actay', fontSize: '1vw', textAlign: 'center'}} children={title}/>
+                <Typography sx={{fontFamily: 'Actay', fontSize: '1vw', textAlign: 'center', color: '#E1A632'}} children={place}/>
+            </Box>
         </TableCell>
     )
 }

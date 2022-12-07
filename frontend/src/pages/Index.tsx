@@ -1,4 +1,4 @@
-import { Box, Button, Container, Input, Typography, IconButton } from "@suid/material";
+import { Box, Button, Container, Input, Typography, IconButton, List, ListItem } from "@suid/material";
 import Person from "@suid/icons-material/Person";
 import LogoutOutlined from "@suid/icons-material/LogoutOutlined";
 import LoginOutlined from "@suid/icons-material/LoginOutlined";
@@ -16,7 +16,7 @@ const Index: Component = () => {
     const login = getData()
     
     return (
-        <Box sx={{position: 'relative'}}>
+        <Box sx={{position: 'relative', m: '0 0 2vw 0'}}>
             <Container 
                 component='header'
                 disableGutters
@@ -175,10 +175,88 @@ const Index: Component = () => {
             <Box 
                 sx={{
                     display: 'flex',
+                    flexDirection: 'column',
                     justifyContent: 'center'
                 }}
             >
                 <img src={books}/>
+                <Box sx={{
+                    display: 'flex',
+                    flexDirection: 'column',
+                    width: '100%',
+                    height: 'fit-content',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                    p: '0 5vw',
+                    mt: '2vw',
+                    textTransform: 'uppercase'
+                }}>
+                    <Typography width='100%' fontFamily='Druzhok' fontSize='7vw'><span style='color: #E15F41;'>О</span> НАС</Typography>
+                    <Typography width='100%' fontFamily='Actay' fontSize='3vw' lineHeight='100%' letterSpacing='0.3rem'>
+                        Book и Друг – это краудфандинг платформа для библиотек. 
+                        Мы собираем средства для пополнения книжных фондов районных библиотек, и Вы можете помочь! 
+                    </Typography>
+                    <Typography sx={{
+                        width: '100%',
+                        fontFamily: 'Actay',
+                        fontSize: '2.5vw',
+                        letterSpacing: '0.1rem',
+                        textAlign: 'start',
+                        lineHeight: '105%',
+                        m: '3vw 0'
+                    }}>
+                        <span style='font-size: 4vw; color: #E15F41; font-style: italic'>Как пользоваться сайтом?</span>
+                        <Box mt='1vw'>
+                            <span style='font-weight: bold;'>Осуществите регистрацию на сайте</span>
+                            <Box fontSize='1.9vw' ml='1.5vw'>
+                                <span>• Нажмите серый кружок в правом верхнем углу раздела "Главное"</span><br/>
+                                <span>• В форме входа в аккаунт нажмите "Создать"</span><br/>
+                                <span>• Придумайте логин и пароль и завершите регистрацию</span>
+                            </Box>
+                        </Box>
+                        <Box>
+                            <span style='font-weight: bold;'>Поддержите библиотеку</span>
+                            <Box fontSize='1.9vw' ml='1.5vw'>
+                                <span>• Перейдите в раздел "Библиотеки"</span><br/>
+                                <span>• Выберите библиотеку, которую хотите поддержать</span><br/>
+                                <span>• Нажмите кнопку поддержать</span><br/>
+                                <span>
+                                    • Осуществите перевод любой денежной суммы на указанный номер телефона на карту Сбербанка 
+                                    <span style='color: #E15F41;'>(В комментариях к переводу укажите свой логин и библиотеку, которую хотите поддержать)</span>
+                                </span>
+                            </Box>
+                            <span style='font-weight: bold;'>Мы сможем начислить вам бонусы :)</span>
+                        </Box>
+                        <Box>
+                            <span style='font-weight: bold;'>Бонусы? Что такое книжный монстр?</span>
+                            <Box fontSize='1.9vw' ml='1.5vw'>
+                                <span>• За помощь библиотекам наша платформа начисляет бонусы, которые можно обменять на классные подарки</span><br/>
+                                <span>• Свой прогресс вы можете отследить в разделе "Книжный монстр"</span><br/>
+                                <span>• Нажмите на него, он очень милый и умеет рычать!</span>
+                            </Box>
+                        </Box>
+                        <Box>
+                            <span style='font-weight: bold;'>Раздел "Афиша"</span>
+                            <Box fontSize='1.9vw' ml='1.5vw'>
+                                <span>• Здесь вы можете узнать, какие мероприятия проходят в разных районных библиотеках</span>
+                            </Box>
+                        </Box>
+                        <Typography color='#E15F41' fontStyle='italic' fontSize='1.9vw' lineHeight='100%'>Все средства, собранные через краудфандинг будут потрачены на приобритение книг в книжные фонды библиотек</Typography>
+                    </Typography>
+                    <Box sx={{
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'end'
+                    }}>
+                        <Typography textAlign='start' fontFamily='Actay' fontSize='1.3vw' lineHeight='100%' letterSpacing='0.1rem'>
+                            Организаторы проекта:<br/>
+                                Чирва Михаил Сергеевич<br/>
+                                Черепанов Андрей Николаевич<br/>
+                                Короткова Валерия Владимировна<br/>
+                                Жуков Кирилл Сергеевич<br/>
+                        </Typography>
+                    </Box>
+                </Box>
             </Box>
         </Box>
     )
