@@ -179,7 +179,12 @@ const Index: Component = () => {
                     justifyContent: 'center'
                 }}
             >
-                <img src={books}/>
+                <Box sx={{
+                    width: '100%',
+                    overflow: 'hidden'
+                }}>
+                    <img width='100%' src={books}/>
+                </Box>
                 <Box sx={{
                     display: 'flex',
                     flexDirection: 'column',
