@@ -194,7 +194,7 @@ const Index: Component = () => {
                     textAlign: 'center',
                     p: '0 5vw',
                     mt: '2vw',
-                    textTransform: 'uppercase'
+                    // textTransform: 'uppercase'
                 }}>
                     <Typography width='100%' fontFamily='Druzhok' fontSize='7vw'><span style='color: #E15F41;'>О</span> НАС</Typography>
                     <Typography width='100%' fontFamily='Actay' fontSize='3vw' lineHeight='100%' letterSpacing='0.3rem'>

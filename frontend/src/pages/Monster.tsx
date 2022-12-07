@@ -61,10 +61,14 @@ const Monster: Component = () => {
                     position: 'absolute',
                     right: '2%',
                     display: 'flex',
+                    flexDirection: 'column', 
                     zIndex: 1
                 }}>
-                    <Typography fontSize='2vw' fontFamily='Actay' fontWeight='bold'>Монстр доволен на:{'\xa0'}</Typography>
-                    <Typography fontSize='2vw' fontFamily='Actay' fontWeight='bold' fontStyle='italic'>{data()?.donated ? data()?.donated : 0} руб</Typography>
+                    <Box displayRaw='flex' flexDirection='row'>
+                        <Typography fontSize='2vw' fontFamily='Actay' fontWeight='bold'>Монстр доволен на:{'\xa0'}</Typography>
+                        <Typography fontSize='2vw' fontFamily='Actay' fontWeight='bold' fontStyle='italic'>{data()?.donated ? data()?.donated : 0} руб</Typography>
+                    </Box>
+                    <Typography fontFamily='Actay' fontSize='1vw'>Уже куплено: 8 книг библиотекам</Typography>
                 </Box>
                 <Box
                     sx={{

@@ -58,8 +58,9 @@ const LibraryEntry: Component<{title: string, address: string, bookList: Array<s
                         m: '0 4%'
                     }}/>
                     <Box sx={{
+                        width: '50vw'
                     }}>
-                        <Typography fontFamily='Actay' fontSize='3.5vw' mb='10px' color='#E15F41'>СПИСОК КНИГ</Typography>
+                        <Typography fontFamily='Actay' fontSize='2.5vw' lineHeight='100%' mb='10px' color='#E15F41' textTransform='uppercase'>Список книг,<br/>которые нужны библиотеке</Typography>
                         <For each={bookList}>
                             {(item) => <Typography fontFamily='Actay' fontSize='1.2vw' lineHeight='100%' fontStyle='italic'>{item}</Typography>}
                         </For>
@@ -197,7 +198,7 @@ const LocationBar: Component<{amount: number, id: number, tooltip: string}> = ({
             </Dismiss>
             <Box children={id} sx={{position: 'absolute', fontSize: '3vw', fontFamily: 'Actay', top: '15%'}}/>
             <img height='100%' src={location}/>
-            <Typography fontFamily='Actay' mt='12.5%' fontSize='1.5vw'>{amount} руб</Typography>
+            <Typography fontFamily='Actay' mt='12.5%' fontSize='1.5vw'>{amount}</Typography>
         </Box>
     )
 }
