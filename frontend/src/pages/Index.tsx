@@ -138,7 +138,7 @@ const Index: Component = () => {
                                         <Button fullWidth sx={{borderRadius: '1.5vw', color: 'red', fontSize: '0.8vw', minWidth: 0, height: '2vw'}} href='/auth/logout'><LogoutOutlined fontSize='inherit'/>Выйти</Button>
                                     </Box>
                                     :
-                                    <Button fullWidth sx={{borderRadius: '15px', fontSize: '0.8vw', minWidth: 0}} href='/login'><LoginOutlined fontSize='inherit'/>Войти</Button>
+                                    <Button fullWidth sx={{borderRadius: '1.5vw', fontSize: '0.8vw', minWidth: 0}} href='/login'><LoginOutlined fontSize='inherit'/>Войти</Button>
                                 }
                             </Box>
                         </Dismiss>
