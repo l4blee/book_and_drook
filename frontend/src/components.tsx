@@ -116,13 +116,13 @@ const PlayBillEntry: Component<{date: string, time?: string, img: string, title:
 
 const NavigationButton: Component<{children: JSX.Element, href: string}> = ({children, href}) => {
     return (
-        <Button 
+        <Button
             sx={{
+                minWidth: 'fit-content',
                 height: '4vw', 
                 color: '#000', 
                 fontSize: '1.4vw',
-                lineHeight: '100%', 
-                letterSpacing: '0.1rem',
+                lineHeight: '100%',
                 fontFamily: 'Actay',
                 textAlign: 'center'
             }} 

@@ -38,7 +38,7 @@ const Index: Component = () => {
                         width: 'fit-content', 
                         height: 'fit-content', 
                         m: 0,
-                        mt: '60px',
+                        mt: '5vw',
                         ml: '5%'
                     }}
                 >
@@ -87,26 +87,27 @@ const Index: Component = () => {
                 
                 <Container
                     component='nav'
+                    disableGutters
                     sx={{
                         display: 'flex',
                         position: 'relative',
                         flexDirection: 'column',
                         justifyContent: 'center',
                         alignItems: 'center',
-                        ml: '5%',
-                        mr: '5%'
+                        m: '0 5%'
                     }}
                 >
                     <IconButton 
                         ref={dropdownButton}
-                        children={<Person/>}
+                        children={<Person fontSize='inherit'/>}
                         sx={{
                             position: 'absolute',
-                            right: '5%',
-                            top: '10%',
+                            transform: 'translate(450%, -140%)',
                             width: '4.5vw',
+                            fontSize: '2.5vw',
                             height: '4.5vw',
-                            bgcolor: '#D9D9D9'
+                            bgcolor: '#D9D9D9',
+                            minWidth: 0
                         }}
                     />
                     <Show when={login.state === 'ready'}>
@@ -119,7 +120,8 @@ const Index: Component = () => {
                                 sx={{
                                     position: 'absolute',
                                     width: '8vw',
-                                    borderRadius: '15px',
+                                    height: 'fit-content',
+                                    borderRadius: '1.5vw',
                                     boxShadow: '#00000029 0 0 25px',
                                     bgcolor: '#fff',
                                     display: 'flex',
@@ -133,10 +135,10 @@ const Index: Component = () => {
                                     login()?.message !== 'unauth' ?
                                     <Box sx={{display: 'flex', width: '100%', flexDirection: 'column'}}>
                                         <Typography sx={{fontSize: '1vw', width: '100%', textAlign: 'center', mt: '1%'}}>{login()?.nickname}</Typography>
-                                        <Button fullWidth sx={{borderRadius: '15px', color: 'red', fontSize: '0.8vw'}} href='/auth/logout'><LogoutOutlined fontSize='large'/>Выйти</Button>
+                                        <Button fullWidth sx={{borderRadius: '1.5vw', color: 'red', fontSize: '0.8vw', minWidth: 0, height: '2vw'}} href='/auth/logout'><LogoutOutlined fontSize='inherit'/>Выйти</Button>
                                     </Box>
                                     :
-                                    <Button fullWidth sx={{borderRadius: '15px', fontSize: '0.8vw'}} href='/login'><LoginOutlined/>Войти</Button>
+                                    <Button fullWidth sx={{borderRadius: '15px', fontSize: '0.8vw', minWidth: 0}} href='/login'><LoginOutlined fontSize='inherit'/>Войти</Button>
                                 }
                             </Box>
                         </Dismiss>
@@ -161,11 +163,11 @@ const Index: Component = () => {
                         disableUnderline
                         sx={{
                             height: '2.5vw',
+                            width: '100%',
                             borderRadius: '30px',
                             fontSize: '1vw',
                             mt: '2%',
                             fontFamily: 'Actay',
-                            letterSpacing: '0.1rem',
                             padding: '0 3%',
                             bgcolor: '#63CDDA60'
                         }}
