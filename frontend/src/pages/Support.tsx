@@ -55,7 +55,7 @@ const Support: Component = () => {
                             display: 'flex',
                             alignItems: 'center'
                         }}>
-                            <img src={sber}/><span style='color: #209F34;'>+7(913)745-39-27</span>
+                            <img src={sber}/><span style='color: #209F34; font-weight: bold; margin-left: .5vw;'>+7(913)745-39-27</span>
                         </Box>
                     </Typography>
                 </Box>
