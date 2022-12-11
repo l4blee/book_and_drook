@@ -28,10 +28,10 @@ const Libraries: Component = () => {
             <PeripheryNavigation/>
             <Container
                 maxWidth={false}
+                disableGutters
                 sx={{
                     display: 'flex',
                     flexDirection: 'column',
-                    padding: '0 !important'
                 }}
             >
                 <For each={libraries()}>

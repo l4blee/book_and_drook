@@ -51,7 +51,7 @@ const LibraryEntry: Component<{title: string, address: string, bookList: Array<[
                         backgroundPosition: 'center',
                         backgroundRepeat: 'no-repeat',
                         backgroundSize: '35vw auto',
-                        border: '5px solid #000',
+                        border: '0.5vw solid #000',
                         borderRadius: '30px',
                         width: '35vw', 
                         height: '19.5vw',
