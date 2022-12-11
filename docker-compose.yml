@@ -14,7 +14,7 @@ services:
     volumes:
       - ./data/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./frontend/dist:/front
-      - ./backend/static:/static
+      - ./backend:/back
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     depends_on:
