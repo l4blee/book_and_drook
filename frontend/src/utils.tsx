@@ -6,6 +6,6 @@ interface Data {
     donated: number
 }
 
-export function getData() : Resource<Data> {
-    return createResource(async () => (await fetch('/api/get_data', {method: 'POST'})).json())[0]
+export function getUserData() : Resource<Data> {
+    return createResource(async () => (await fetch('/api/get_user_data')).json())[0]
 }

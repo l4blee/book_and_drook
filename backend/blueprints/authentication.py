@@ -34,7 +34,7 @@ class AuthenticationPayload:
 @bp.route('/login', methods=['POST'])
 async def login(request: Request):
     payload = AuthenticationPayload.from_request(request)
-    record = request.ctx.db.find_one({
+    record = request.ctx.db.users.find_one({
         'login': payload.login
     })
     
@@ -54,7 +54,7 @@ async def login(request: Request):
 @bp.route('/register', methods=['POST'])
 async def register(request: Request):
     payload = AuthenticationPayload.from_request(request)
-    record = request.ctx.db.find_one({
+    record = request.ctx.db.users.find_one({
         'login': payload.login
     })
 
@@ -70,7 +70,7 @@ async def register(request: Request):
         donated=0
     )
 
-    request.ctx.db.insert_one(user.to_dict())
+    request.ctx.db.users.insert_one(user.to_dict())
 
     response = redirect('/')
     response.cookies['session'] = request.ctx.login_manager.login_user(user)

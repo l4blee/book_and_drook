@@ -1,4 +1,4 @@
-import { Box, Button, Container, Input, Typography, IconButton, List, ListItem } from "@suid/material";
+import { Box, Button, Container, Input, Typography, IconButton } from "@suid/material";
 import Person from "@suid/icons-material/Person";
 import LogoutOutlined from "@suid/icons-material/LogoutOutlined";
 import LoginOutlined from "@suid/icons-material/LoginOutlined";
@@ -6,14 +6,14 @@ import { Component, createSignal, Show } from "solid-js";
 import Dismiss from "solid-dismiss";
 import books from '../assets/books.svg'
 import mouse from '../assets/mouse.svg'
-import { getData } from "../utils";
+import { getUserData } from "../utils";
 import { NavigationButton } from "../components";
 
 
 const Index: Component = () => {
     var dropdownButton: HTMLButtonElement | undefined
     const [dropOpen, setDropOpen] = createSignal(false)
-    const login = getData()
+    const login = getUserData()
     
     return (
         <Box sx={{position: 'relative', m: '0 0 2vw 0'}}>

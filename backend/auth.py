@@ -23,7 +23,7 @@ class LoginManager:
                 'HS256'
             ).get('user')
 
-            user_record = request.ctx.db.find_one({'login': serialized['login']})
+            user_record = request.ctx.db.users.find_one({'login': serialized['login']})
             if user_record is None:
                 return None
 

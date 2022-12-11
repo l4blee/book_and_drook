@@ -1,7 +1,7 @@
 import { Box, Typography } from "@suid/material"
 import { Component } from "solid-js"
 import { PeripheryNavigation } from "../components"
-import { getData } from "../utils"
+import { getUserData } from "../utils"
 import sber from '../assets/sber.svg'
 import monster from '../assets/supportMonster.svg'
 import pic1 from '../assets/bought1.png'
@@ -9,7 +9,7 @@ import pic2 from '../assets/bought2.png'
 import pic3 from '../assets/bought3.png'
 
 const Support: Component = () => {
-    const data = getData()
+    const data = getUserData()
 
     return (
         <Box sx={{
@@ -46,7 +46,7 @@ const Support: Component = () => {
                         textTransform: 'uppercase',
                         fontSize: '2vw',
                         fontFamily: 'Actay',
-                        letterSpacing: '0.2rem',
+                        letterSpacing: '0.1rem',
                         width: '35vw',
                         mt: '5vw'
                     }}>
@@ -55,7 +55,7 @@ const Support: Component = () => {
                             display: 'flex',
                             alignItems: 'center'
                         }}>
-                            <img src={sber}/><span style='color: #209F34; font-weight: bold; margin-left: .5vw;'>+7(913)745-39-27</span>
+                            <img width='10%' src={sber}/><span style='color: #209F34; font-weight: bold; margin-left: .5vw;'>+7(913)745-39-27</span>
                         </Box>
                     </Typography>
                 </Box>

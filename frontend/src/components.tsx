@@ -6,7 +6,7 @@ import location from './assets/location.svg'
 import Dismiss from "solid-dismiss";
 
 
-const LibraryEntry: Component<{title: string, address: string, bookList: Array<string>, imgSrc: string}> =
+const LibraryEntry: Component<{title: string, address: string, bookList: Array<[string, boolean]>, imgSrc: string}> =
  ({title, address, bookList, imgSrc}) => {
     return (
         <Container 
@@ -30,7 +30,7 @@ const LibraryEntry: Component<{title: string, address: string, bookList: Array<s
                     </Box>
                     <Box width='35vw'>
                         <Button 
-                            sx={{bgcolor: '#ACCDAA', color: '#000', height: '5vw', width: '35vw', borderRadius: '50px', border: '5px solid #000'}}
+                            sx={{bgcolor: '#ACCDAA', color: '#000', height: '5vw', width: '35vw', borderRadius: '50px', border: '0.2vw solid #000'}}
                             href='/support'
                         >
                             <Typography fontFamily='Actay' fontSize='2.5vw' lineHeight='100%' children={'Поддержать'}/>
@@ -62,7 +62,11 @@ const LibraryEntry: Component<{title: string, address: string, bookList: Array<s
                     }}>
                         <Typography fontFamily='Actay' fontSize='2.5vw' lineHeight='100%' mb='10px' color='#E15F41' textTransform='uppercase'>Список книг,<br/>которые нужны библиотеке</Typography>
                         <For each={bookList}>
-                            {(item) => <Typography fontFamily='Actay' fontSize='1.2vw' lineHeight='100%' fontStyle='italic'>{item}</Typography>}
+                            {(item, index) => 
+                                <Typography fontFamily='Actay' fontSize='1.2vw' lineHeight='100%' fontStyle='italic'>
+                                    {index() + 1}. {item[0]} {item[1] && '✅'}
+                                </Typography>
+                            }
                         </For>
                     </Box>
                 </Container>
@@ -72,32 +76,32 @@ const LibraryEntry: Component<{title: string, address: string, bookList: Array<s
     )
 }
 
-const PlayBillEntry: Component<{date: string, time?: string, img: string, title: string, place: string}> = 
- ({date, time, img, title, place}) => {
+const PlayBillEntry: Component<{date: string, time: string, imgSrc: string, title: string, place: string}> = 
+ ({date, time, imgSrc, title, place}) => {
     return (
         <TableCell 
             sx={{
                 fontSize: '1.2vw', 
-                p: '10px 0',
+                p: '0.5vw 0',
                 height: '17vw',
                 width: '22.5vw',
                 display: 'flex', 
                 flexDirection: 'column', 
                 alignItems: 'center', 
                 justifyContent: 'space-between',
-                borderRight: '3px solid black',
+                borderRight: '0.2vw solid black',
                 '&:last-child': {
                     borderRight: 'none'
                 }
         }}>
             <Box sx={{display: 'flex'}}>
                 <Typography sx={{fontSize: '1.5vw', fontFamily: 'Actay'}} children={date}/>
-                {time && <Typography sx={{color: '#E15F41', ml: '0.5vw', fontSize: '1.5vw', fontFamily: 'Actay'}} children={time}/>}
+                {time !== '' && <Typography sx={{color: '#E15F41', ml: '0.5vw', fontSize: '1.5vw', fontFamily: 'Actay'}} children={time}/>}
             </Box>
             <Box sx={{
                 height: '11vw', 
                 width: '20vw',
-                backgroundImage: `url(${img})`,
+                backgroundImage: `url(${imgSrc})`,
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: '20vw',

@@ -1,12 +1,18 @@
 import { Box, Container } from "@suid/material";
-import { Component, onMount } from "solid-js";
+import { Component, createResource, For, onMount } from "solid-js";
 import { LibraryEntry, PeripheryNavigation } from "../components";
-import nekrasova from '../assets/libraries/nekrasova.svg'
-import bazhova from '../assets/libraries/bazhova.svg'
-import bianki from '../assets/libraries/bianki.svg'
+
+interface LibraryPayload {
+    title: string,
+    address: string,
+    booklist: Array<[string, boolean]>,
+    image: string
+}
 
 
 const Libraries: Component = () => {
+    const [libraries, _] = createResource<LibraryPayload[]>(async () => (await fetch('/api/get_libraries')).json())
+
     onMount(() => {
         document.title = 'Book и друг | Библиотеки'
     })
@@ -28,57 +34,16 @@ const Libraries: Component = () => {
                     padding: '0 !important'
                 }}
             >
-                <LibraryEntry
-                    title='Библиотека им. Н. А. Некрасова' 
-                    address='ул. Римского-Корсакова, 5/1, Новосибирск'
-                    bookList={[
-                        '1. Степнова М. "Сад"', 
-                        '2. Диккенс Ч. "Рождественская песнь" (в прозе)',
-                        '3. Хармон Э. "Босиком по траве"',
-                        '4. Кард О.-С. "Игра Эндера"',
-                        '5. Громыко О. серия "Профессия: ведьма" - кн. "Ведьма-хранительница"',
-                        '6. Бакман Ф. "Вторая жизнь Уве"',
-                        '7. Коллинз с. из трилогии "Голодные игры" - кн. "Сойка-пересмешница"' ,
-                        '8. Кинг С. "Зеленая миля"',
-                        '9. Оуэнс Д. "Там, где раки поют"',
-                        '10. Михаэлидес А. «Безмолвный пациент»'
-                    ]}
-                    imgSrc={nekrasova}
-                />
-                <LibraryEntry
-                    title='Библиотека им. П.П. Бажова' 
-                    address='ул. Новогодняя, 11, Новосибирск'
-                    bookList={[
-                        '1. Степнова М. "Сад" ✅', 
-                        '2. Диккенс Ч. "Рождественская песнь" (в прозе)',
-                        '3. Хармон Э. "Босиком по траве"',
-                        '4. Кард О.-С. "Игра Эндера"',
-                        '5. Громыко О. серия "Профессия: ведьма" - кн. "Ведьма-хранительница"',
-                        '6. Бакман Ф. "Вторая жизнь Уве"',
-                        '7. Коллинз с. из трилогии "Голодные игры" - кн. "Сойка-пересмешница"' ,
-                        '8. Кинг С. "Зеленая миля" ✅',
-                        '9. Степнова М. "Безбожный переулок" ✅',
-                        '10. Михаэлидес А. «Безмолвный пациент»'
-                    ]}
-                    imgSrc={bazhova}
-                />
-                <LibraryEntry
-                    title='Библиотека им. В.В. Бианки' 
-                    address='ул. 9 Гвардейской Дивизии, 18, Новосибирск'
-                    bookList={[
-                        '1. Андреева Жанна. «Вам пакет нужен?»', 
-                        '2. Тятте Анна С. «Книжка для детей ЭКОЛОГИЯ» ✅',
-                        '3. Швецова Мария. «С заботой о планете»',
-                        '4. «Тяни, толкай, крути, читай. Береги планету» ✅',
-                        '5. Ульева Елена. «Спасай планету»',
-                        '6. Гончарова Анна Сергеевна. «Еня и Еля. Волшебная экология»',
-                        '7. Нескучная наука. «Ученые ответы на детские вопросы»' ,
-                        '8. Дельфина Гринберг. «Планета в твоих руках. Энциклопедия по экологии»',
-                        '9. Мария Ершова. «Маленькая книга зеленой жизни. Как перестать быть врагом природы и спасти человечество» ✅',
-                        '10. Рейчел Игнотофски. «Большая маленькая планета»'
-                    ]}
-                    imgSrc={bianki}
-                />
+                <For each={libraries()}>
+                    {(item, _) => 
+                        <LibraryEntry
+                            title={item.title}
+                            address={item.address}
+                            bookList={item.booklist}
+                            imgSrc={item.image}
+                        />
+                    }
+                </For>
             </Container>
         </Box>
     )

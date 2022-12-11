@@ -36,6 +36,14 @@ class UserModel:
 
     def validate(self, password: bytes) -> bool:
         return bcrypt.hashpw(password, self.salt) == self.hashed_password
+    
+
+@dataclass
+class LibraryModel:
+    title: str
+    address: str
+    booklist: list[str]
+    image: str
 
 
 class MongoDB:
@@ -43,3 +51,5 @@ class MongoDB:
         self.client = MongoClient(connection_url)
 
         self.users = self.client.platform.users  # Users regisrty
+        self.libraries = self.client.platform.libraries  # Libraries registry
+        self.playbill = self.client.platform.playbill  # Playbill registry

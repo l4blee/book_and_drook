@@ -1,16 +1,15 @@
 import { Box, Container, Typography } from "@suid/material";
 import { Component, createEffect, createSignal, onMount } from "solid-js";
 import { LocationBar, PeripheryNavigation } from "../components";
-import { getData } from "../utils";
+import { getUserData } from "../utils";
 import monster from '../assets/monster.svg'
 import hungry from '../assets/hungry.svg'
 import roar from '../assets/monsterRoar.mp3'
 import book from '../assets/monsterBook.svg'
-import location from '../assets/location.svg'
 
 
 const Monster: Component = () => {
-    const data = getData()
+    const data = getUserData()
     const audio = new Audio(roar)
     audio.volume = 0.1
 
@@ -35,20 +34,14 @@ const Monster: Component = () => {
     }
     
     return (
-        <Box sx={{
-            width: '100vw',
-            height: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center'
-        }}>
+        <Box>
             <PeripheryNavigation/>
             <Container
                 maxWidth={false}
+                disableGutters
                 sx={{
-                    height: '100%',
                     mt: '4vw',
+                    p: '0 1.5vw',
                     position: 'relative',
                     display: 'flex',
                     flexDirection: 'column',
@@ -110,17 +103,15 @@ const Monster: Component = () => {
                 </Box>
                 <Box
                     sx={{
+                        width: '100%',
                         display: 'flex',
                         flexDirection: 'row',
-                        width: '100%',
-                        alignItems: 'center',
+                        alignItems: 'end',
                         justifyContent: 'end',
-                        position: 'absolute',
-                        bottom: '1vw',
-                        right: '1vw'
+                        transform: 'translateY(-75%)'
                 }}>
-                    <Box width='5vw'><img src={hungry} width='100%'/></Box>
-                    <Typography fontFamily='Actay' fontSize='2vw'>Накорми монстра, получи подарки<br/> и помоги библиотекам вместе с нами</Typography>
+                    <Box width='5vw' mr='1vw'><img src={hungry} width='100%'/></Box>
+                    <Typography fontFamily='Actay' fontSize='2vw' lineHeight='120%'>Накорми монстра, получи подарки<br/> и помоги библиотекам вместе с нами</Typography>
                 </Box>
             </Container>
         </Box>

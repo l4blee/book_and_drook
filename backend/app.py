@@ -8,6 +8,7 @@ from auth import LoginManager
 
 app = Sanic(__name__)
 app.static('/assets', 'frontend/dist/assets')
+app.static('/static', 'backend/static')
 
 app.config.SECRET = '02f24e90200099ec055f17819b97910a67571a11d762df36'
 app.config.COOKIE_MAX_AGE = 60 * 60 * 2
@@ -29,6 +30,6 @@ lm = LoginManager(app)
 
 @app.middleware
 async def request(request):
-    request.ctx.db = db.users
+    request.ctx.db = db
     request.ctx.user = lm.get_user(request)
     request.ctx.login_manager = lm
