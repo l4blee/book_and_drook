@@ -135,10 +135,10 @@ const Index: Component = () => {
                                     login()?.message !== 'unauth' ?
                                     <Box sx={{display: 'flex', width: '100%', flexDirection: 'column'}}>
                                         <Typography sx={{fontSize: '1vw', width: '100%', textAlign: 'center', mt: '1%'}}>{login()?.nickname}</Typography>
-                                        <Button fullWidth sx={{borderRadius: '1.5vw', color: 'red', fontSize: '0.8vw', minWidth: 0, height: '2vw'}} href='/auth/logout'><LogoutOutlined fontSize='inherit'/>Выйти</Button>
+                                        <Button fullWidth sx={{borderRadius: '1.5vw', color: 'red', fontSize: '1vw', minWidth: 0, height: '2vw'}} href='/auth/logout'><LogoutOutlined fontSize='inherit'/>Выйти</Button>
                                     </Box>
                                     :
-                                    <Button fullWidth sx={{borderRadius: '1.5vw', fontSize: '0.8vw', minWidth: 0}} href='/login'><LoginOutlined fontSize='inherit'/>Войти</Button>
+                                    <Button fullWidth sx={{borderRadius: '1.5vw', fontSize: '1vw', minWidth: 0}} href='/login'><LoginOutlined fontSize='inherit'/>Войти</Button>
                                 }
                             </Box>
                         </Dismiss>

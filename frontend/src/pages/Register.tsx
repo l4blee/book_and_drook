@@ -117,7 +117,7 @@ const Register: Component = () => {
                             mt: '15px'
                     }}>
                         <InputLabel for='login' required>Логин</InputLabel>
-                        <Input id='login' required onChange={onChange}/>
+                        <Input id='login' required onChange={onChange} type='text' inputProps={{pattern: '[a-zA-Z0-9-0]{3,20}'}}/>
                     </FormControl>
                     <FormControl 
                         fullWidth 

@@ -114,7 +114,7 @@ const Login: Component = () => {
                             mt: '15px'
                     }}>
                         <InputLabel for='login'>Логин</InputLabel>
-                        <Input id='login' onChange={onChange}/>
+                        <Input id='login' inputProps={{pattern: '[a-zA-Z0-9-0]{3,20}'}} onChange={onChange}/>
                     </FormControl>
                     <FormControl 
                         fullWidth 

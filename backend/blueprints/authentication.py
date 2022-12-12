@@ -34,6 +34,9 @@ class AuthenticationPayload:
 @bp.route('/login', methods=['POST'])
 async def login(request: Request):
     payload = AuthenticationPayload.from_request(request)
+    if 3 > len(payload.password) > 20:
+        ...
+
     record = request.ctx.db.users.find_one({
         'login': payload.login
     })
@@ -54,6 +57,9 @@ async def login(request: Request):
 @bp.route('/register', methods=['POST'])
 async def register(request: Request):
     payload = AuthenticationPayload.from_request(request)
+    if 3 > len(payload.password) > 20:
+        ...
+
     record = request.ctx.db.users.find_one({
         'login': payload.login
     })
