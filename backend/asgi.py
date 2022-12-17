@@ -1,6 +1,4 @@
-import os
-
 from app import app
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', int(os.getenv('PORT')), workers=1)
+    app.run('0.0.0.0', 5000, workers=1)

@@ -2,6 +2,9 @@
 !frontend/dist
 certificates/
 .vscode/
+data/s3_env.env
+data/certbot
+data/s3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

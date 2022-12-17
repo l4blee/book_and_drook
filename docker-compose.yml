@@ -1,11 +1,14 @@
+version: '3.3'
 services:
   sanic:
+    container_name: webserver    
     build: .
     env_file: .env
     ports:
       - 5000:5000
     restart: unless-stopped
   nginx:
+    container_name: nginx
     image: arm64v8/nginx:latest
     ports:
       - 80:80
@@ -17,16 +20,31 @@ services:
       - ./backend:/back
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
+      - ./data/s3:/s3
     depends_on:
       - sanic
+      - s3
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
   certbot:
+    container_name: certbot
     restart: unless-stopped
     image: certbot/certbot:arm64v8-latest
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
     entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+  s3:
+    container_name: s3
+    image: minio/minio:latest
+    restart: unless-stopped
+    ports:
+      - 9000:9000
+      - 9090:9090
+    volumes:
+      - ./data/s3:/data
+    env_file:
+      - ./data/s3_env.env
+    command: server /data --console-address ":9090"
 
 networks:
   default:
