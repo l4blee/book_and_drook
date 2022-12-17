@@ -20,7 +20,6 @@ services:
       - ./backend:/back
       - ./data/certbot/conf:/etc/letsencrypt
       - ./data/certbot/www:/var/www/certbot
-      - ./data/s3:/s3
     depends_on:
       - sanic
       - s3
