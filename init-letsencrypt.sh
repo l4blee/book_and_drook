@@ -5,7 +5,7 @@ if ! [ -x "$(command -v docker-compose)" ]; then
   exit 1
 fi
 
-domains=(bookanddroog.tk www.bookanddroog.tk)
+domains=(bookanddroog.tk www.bookanddroog.tk minio.bookanddroog.tk)
 rsa_key_size=4096
 data_path="./data/certbot"
 email="l4blee@yandex.ru" # Adding a valid address is strongly recommended
