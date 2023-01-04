@@ -132,7 +132,7 @@ const Index: Component = () => {
                                     top: '35%'
                             }}>
                                 {
-                                    login()?.message !== 'unauth' ?
+                                    login()?.message !== 'unauthorized' ?
                                     <Box sx={{display: 'flex', width: '100%', flexDirection: 'column'}}>
                                         <Typography sx={{fontSize: '1vw', width: '100%', textAlign: 'center', mt: '1%'}}>{login()?.nickname}</Typography>
                                         <Button fullWidth sx={{borderRadius: '1.5vw', color: 'red', fontSize: '1vw', minWidth: 0, height: '2vw'}} href='/auth/logout'><LogoutOutlined fontSize='inherit'/>Выйти</Button>

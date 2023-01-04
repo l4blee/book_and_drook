@@ -1,4 +1,4 @@
-import { Link } from "@solidjs/router";
+import { Link, useNavigate } from "@solidjs/router";
 import Visibility from "@suid/icons-material/Visibility";
 import VisibilityOff from "@suid/icons-material/VisibilityOff";
 import { Box, Button, Container, FormControl, IconButton, Input, InputLabel, Typography } from "@suid/material";
@@ -38,7 +38,7 @@ const Login: Component = () => {
                     'Content-Type': 'application/json'
                 }
             }
-        ).then(response => {
+        ).then(async (response) => {
             if (response.status === 401) {
                 setHeaderError({
                     status: true,
@@ -46,16 +46,19 @@ const Login: Component = () => {
                 })
                 return
             }
+
+            if (response.redirected) {
+                window.location.replace(response.url);
+                return
+            }
+
+
             if (response.status !== 200) {
                 setHeaderError({
                     status: true, 
                     message: 'Произошла ошибка, попробуйте позже.'
                 })
                 return
-            }
-
-            if (response.redirected) {
-                window.location.assign(response.url)
             }
         })
         .catch((_) => {
@@ -114,7 +117,7 @@ const Login: Component = () => {
                             mt: '15px'
                     }}>
                         <InputLabel for='login'>Логин</InputLabel>
-                        <Input id='login' inputProps={{pattern: '[a-zA-Z0-9-0]{3,20}'}} onChange={onChange}/>
+                        <Input id='login' inputProps={{pattern: '[a-zA-Z0-9-0]{3,20}'}} onChange={onChange} required/>
                     </FormControl>
                     <FormControl 
                         fullWidth 
@@ -125,7 +128,7 @@ const Login: Component = () => {
                             mt: '15px'
                     }}>
                         <InputLabel for='password'>Пароль</InputLabel>
-                        <Input fullWidth id='password' type={showPwd() ? 'text' : 'password'} onChange={onChange}/>
+                        <Input fullWidth id='password' type={showPwd() ? 'text' : 'password'} onChange={onChange} required/>
                         <IconButton
                             onClick={() => setShowPwd(!showPwd())}
                             children={showPwd() ?  <VisibilityOff/> : <Visibility/>}

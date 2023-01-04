@@ -1,5 +1,5 @@
 /* @refresh reload */
-import { render } from 'solid-js/web';
+import { hydrate, render } from 'solid-js/web';
 
 import './index.scss';
 import App from './App';
