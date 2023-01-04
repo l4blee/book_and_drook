@@ -4,10 +4,10 @@ import { readFile } from 'fs';
 import { Secret } from 'jsonwebtoken';
 import path from 'path';
 import dotenv from 'dotenv';
+import cookieParser from 'cookie-parser';
 
 import mongo from './database';
 import { loadRouters, parseUser } from './utils';
-import cookieParser from 'cookie-parser';
 
 dotenv.config()
 
