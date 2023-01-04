@@ -33,11 +33,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.auth = exports.parseUser = exports.loadRouters = void 0;
-const fs_1 = require("fs");
+const promises_1 = require("fs/promises");
 const jsonwebtoken_1 = require("jsonwebtoken");
 const database_1 = require("./database");
 function loadRouters(app) {
-    (0, fs_1.readdir)('./routers/', (_, files) => __awaiter(this, void 0, void 0, function* () {
+    return __awaiter(this, void 0, void 0, function* () {
+        let files = yield (0, promises_1.readdir)('routers/');
+        console.log(`[Server]: Loading external routers...\n\tFiles found: ${files.join(', ')}`);
         var loaded = [];
         yield Promise.all(files.map((stem) => __awaiter(this, void 0, void 0, function* () {
             var _a;
@@ -45,8 +47,8 @@ function loadRouters(app) {
             loaded.push(stem.slice(0, -3));
             app.use(module.prefix, module.router);
         })));
-        console.log(`[Server]: Loaded ${loaded.length} routers.\nAvailable routers: ${loaded.join('; ')}`);
-    }));
+        console.log(`[Server]: Loaded ${loaded.length} routers.\n\tAvailable routers: ${loaded.join('; ')}`);
+    });
 }
 exports.loadRouters = loadRouters;
 function parseUser(req) {

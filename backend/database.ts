@@ -10,10 +10,14 @@ class Mongo {
     playbill: Collection
 
     constructor(connectionURL: string) {
+        console.log(`Connecting to Mongo via ${connectionURL}`)
+
         this.client = new MongoClient(connectionURL);
         this.users = this.client.db('platform').collection('users')
         this.libraries = this.client.db('platform').collection('libraries')
         this.playbill = this.client.db('platform').collection('playbill')
+
+        console.log('Successfully initialized MongoDB instance, proceeding...')
     }
 }
 

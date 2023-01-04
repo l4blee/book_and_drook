@@ -21,7 +21,6 @@ services:
       - ./data/certbot/www:/var/www/certbot
     depends_on:
       - certbot
-      - express
       - s3
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
   certbot:
@@ -41,8 +40,7 @@ services:
       - 9090:9090
     volumes:
       - ./data/s3:/data
-    env_file:
-      - ./data/s3_env.env
+    env_file: ./data/s3_env.env
     command: server /data --console-address ":9090"
 
 networks:

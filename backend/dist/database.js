@@ -15,10 +15,12 @@ const bcrypt_1 = require("bcrypt");
 // MongoDB class itself
 class Mongo {
     constructor(connectionURL) {
+        console.log(`Connecting to Mongo via ${connectionURL}`);
         this.client = new mongodb_1.MongoClient(connectionURL);
         this.users = this.client.db('platform').collection('users');
         this.libraries = this.client.db('platform').collection('libraries');
         this.playbill = this.client.db('platform').collection('playbill');
+        console.log('Successfully initialized MongoDB instance, proceeding...');
     }
 }
 exports.Mongo = Mongo;

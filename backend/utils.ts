@@ -1,22 +1,22 @@
 import { Express, NextFunction, Request, Response } from "express";
-import { readdir } from "fs";
+import { readdir } from "fs/promises";
 import { JwtPayload, verify } from "jsonwebtoken";
 import { TUser, UserModel } from "./database";
 
 
-function loadRouters(app: Express) {
-    readdir('./routers/', async (_, files) => {
-        var loaded: string[] = []
+async function loadRouters(app: Express) {
+    let files = await readdir('routers/')
+    console.log(`[Server]: Loading external routers...\n\t${files.length} files found: ${files.join(', ')}`)
 
-        await Promise.all(files.map(async (stem) => {
-            let module = (await import('./routers/' + stem.slice(0, -3))).default;
+    var loaded: string[] = []
+    await Promise.all(files.map(async (stem) => {
+        let module = (await import('./routers/' + stem.slice(0, -3))).default;
 
-            loaded.push(stem.slice(0, -3))
-            app.use(module.prefix, module.router)
-        }))
+        loaded.push(stem.slice(0, -3))
+        app.use(module.prefix, module.router) 
+    }))
 
-        console.log(`[Server]: Loaded ${loaded.length} routers.\nAvailable routers: ${loaded.join('; ')}`)
-    })
+    console.log(`[Server]: Loaded ${loaded.length} routers.\n\tAvailable routers: ${loaded.join('; ')}`)
 }
 
 interface JWTUser extends JwtPayload {
