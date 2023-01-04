@@ -2,7 +2,7 @@ FROM node:18.12-alpine
 
 ENV NODE_ENV=production
 
-RUN apk update -y && apk upgrade -y
+RUN apk update && apk upgrade
 
 WORKDIR /book_and_droog/
 
