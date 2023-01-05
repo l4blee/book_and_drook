@@ -1,0 +1,37 @@
+version: '3.3'
+services:
+  express:
+    container_name: webserver    
+    build: backend/
+    env_file: backend/.env
+    ports:
+      - 5001:5001
+    restart: unless-stopped
+  nginx:
+    container_name: nginx
+    image: arm64v8/nginx:latest
+    ports:
+      - 80:80
+      - 443:443
+    restart: unless-stopped
+    volumes:
+      - ./frontend/dist:/front
+      - ./data/nginx.insecure.conf:/etc/nginx/conf.d/default.conf
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    depends_on:
+      - s3
+  s3:
+    container_name: s3
+    image: minio/minio:latest
+    restart: unless-stopped
+    ports:
+      - 9000:9000
+      - 9090:9090
+    volumes:
+      - ./data/s3:/data
+    env_file: ./data/s3_env.env
+    command: server /data --console-address ":9090"
+
+networks:
+  default:
+    driver: bridge

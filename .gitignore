@@ -3,6 +3,7 @@
 .vscode/
 data/*
 !data/nginx.conf
+!data/nginx.insecure.conf
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
