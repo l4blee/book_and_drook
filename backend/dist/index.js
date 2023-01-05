@@ -17,9 +17,9 @@ const compression_1 = __importDefault(require("compression"));
 const fs_1 = require("fs");
 const path_1 = __importDefault(require("path"));
 const dotenv_1 = __importDefault(require("dotenv"));
+const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const database_1 = __importDefault(require("./database"));
 const utils_1 = require("./utils");
-const cookie_parser_1 = __importDefault(require("cookie-parser"));
 dotenv_1.default.config();
 const app = (0, express_1.default)();
 const secret = '02f24e90200099ec055f17819b97910a67571a11d762df36';
@@ -41,8 +41,10 @@ app.use((req, _, next) => __awaiter(void 0, void 0, void 0, function* () {
 const availables = '(libraries|login|monster|playbill|register|support)';
 app.get(`/:path${availables}?`, (_, res) => {
     (0, fs_1.readFile)(path_1.default.join('../frontend/dist/index.html'), 'utf-8', (err, data) => {
-        if (err)
+        if (err) {
+            console.log(`[Server]: Error occured: ${err}`);
             res.status(500).send('Internal Error');
+        }
         res.send(data);
     });
 });

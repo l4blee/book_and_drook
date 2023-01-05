@@ -37,7 +37,10 @@ app.use(async (req, _, next) => {
 const availables = '(libraries|login|monster|playbill|register|support)'
 app.get(`/:path${availables}?`, (_, res) => {
     readFile(path.join('../frontend/dist/index.html'), 'utf-8', (err, data) => {
-        if (err) res.status(500).send('Internal Error')
+        if (err) {
+            console.log(`[Server]: Error occured: ${err}`)
+            res.status(500).send('Internal Error')
+        }
 
         res.send(data)
     })

@@ -39,7 +39,7 @@ const database_1 = require("./database");
 function loadRouters(app) {
     return __awaiter(this, void 0, void 0, function* () {
         let files = yield (0, promises_1.readdir)('routers/');
-        console.log(`[Server]: Loading external routers...\n\tFiles found: ${files.join(', ')}`);
+        console.log(`[Server]: Loading external routers...\n\t${files.length} files found: ${files.join(', ')}`);
         var loaded = [];
         yield Promise.all(files.map((stem) => __awaiter(this, void 0, void 0, function* () {
             var _a;
