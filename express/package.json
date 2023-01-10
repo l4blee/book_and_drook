@@ -4,8 +4,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node build/index.js",
-    "dev": "concurrently \"npx tsc --watch\" \"nodemon -q build/index.js\"",
-    "prepare": "bash scripts/prepare-svelte.sh",
+    "dev": "npm run build && concurrently \"npx tsc --watch\" \"nodemon -q build/index.js\"",
     "build": "bash scripts/build.sh"
   },
   "keywords": [],

@@ -16,7 +16,7 @@ async function loadRouters(app: Express) {
         app.use(module.prefix, module.router)
     }))
 
-    console.log(`[Server]: Loaded ${loaded.length} routers.\n\tAvailable routers: ${loaded.join('; ')}`)
+    console.log(`[Server]: Loaded ${loaded.length} routers.\n\tAvailable routers: ${loaded.join('; ')}\n`)
 }
 
 interface JWTUser extends JwtPayload {

@@ -23,4 +23,4 @@ echo '[Build | 3/4]: Compiling TypeScript...' && sleep 0.5
 npx tsc
 
 # End
-echo '[Build 4/4]: Done!'
+echo '[Build | 4/4]: Done!'
