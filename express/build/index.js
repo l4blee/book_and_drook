@@ -27,8 +27,6 @@ if (process.env.NODE_ENV !== 'production') {
         next();
     });
 }
-const available = ['libraries', 'login', 'monster', 'playbill', 'register', 'support'];
-app.get(`/:path(${available.join('|')})?`, handler);
 app.use((req, _, next) => __awaiter(void 0, void 0, void 0, function* () {
     req.database = database;
     req.config_secret = secret;
@@ -36,6 +34,7 @@ app.use((req, _, next) => __awaiter(void 0, void 0, void 0, function* () {
     next();
 }));
 await loadRouters(app);
+app.use(handler);
 app.listen(5001, () => {
     console.log('[Server]: Running at http://localhost:5001');
 });

@@ -1,4 +1,4 @@
-import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component, n as noop, a as safe_not_equal } from './chunks/index-f78c0b16.js';
+import { c as create_ssr_component, s as setContext, v as validate_component, m as missing_component, n as noop, a as safe_not_equal } from './chunks/index-3ce6e6d7.js';
 
 /** @type {Record<string, string>} */
 const escaped = {
@@ -3551,7 +3551,7 @@ class Server {
       app_template,
       app_template_contains_nonce: false,
       error_template,
-      version: "1673260661949"
+      version: "1674478749202"
     };
   }
   /**

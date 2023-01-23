@@ -4,12 +4,14 @@ const manifest = {
 	assets: new Set(["favicon.png"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		entry: {"file":"_app/immutable/start-e8c4e0ce.js","imports":["_app/immutable/start-e8c4e0ce.js","_app/immutable/chunks/index-7f3551f2.js","_app/immutable/chunks/singletons-c1916556.js"],"stylesheets":[],"fonts":[]},
+		entry: {"file":"_app/immutable/start-2b5b6b7f.js","imports":["_app/immutable/start-2b5b6b7f.js","_app/immutable/chunks/index-29f9af01.js","_app/immutable/chunks/singletons-b36a208e.js"],"stylesheets":[],"fonts":[]},
 		nodes: [
-			() => import('./chunks/0-ac04f2a2.js'),
-			() => import('./chunks/1-1b6978f2.js'),
-			() => import('./chunks/2-307505d7.js'),
-			() => import('./chunks/3-d59e2fe6.js')
+			() => import('./chunks/0-3fb0129b.js'),
+			() => import('./chunks/1-447ad2be.js'),
+			() => import('./chunks/2-12365ce8.js'),
+			() => import('./chunks/3-2daeef48.js'),
+			() => import('./chunks/4-e67c7d67.js'),
+			() => import('./chunks/5-dc314769.js')
 		],
 		routes: [
 			{
@@ -20,10 +22,24 @@ const manifest = {
 				endpoint: null
 			},
 			{
+				id: "/(auth)/login",
+				pattern: /^\/login\/?$/,
+				params: [],
+				page: { layouts: [0], errors: [1], leaf: 3 },
+				endpoint: null
+			},
+			{
 				id: "/monster",
 				pattern: /^\/monster\/?$/,
 				params: [],
-				page: { layouts: [0], errors: [1], leaf: 3 },
+				page: { layouts: [0], errors: [1], leaf: 5 },
+				endpoint: null
+			},
+			{
+				id: "/(auth)/register",
+				pattern: /^\/register\/?$/,
+				params: [],
+				page: { layouts: [0], errors: [1], leaf: 4 },
 				endpoint: null
 			}
 		],

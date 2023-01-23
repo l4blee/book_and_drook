@@ -13,7 +13,7 @@ async function loadRouters(app: Express) {
         let module = (await import('./routers/' + stem.slice(0, -3) + '.js')).default;
 
         loaded.push(stem.slice(0, -3))
-        app.use(module.prefix, module.router)
+        app.use(module.prefix || '/', module.router)
     }))
 
     console.log(`[Server]: Loaded ${loaded.length} routers.\n\tAvailable routers: ${loaded.join('; ')}\n`)

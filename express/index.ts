@@ -27,21 +27,18 @@ if (process.env.NODE_ENV !== 'production') {
     })
 }
 
-
-// Serve Svelte files here
-const available = ['libraries', 'login', 'monster', 'playbill', 'register', 'support']
-app.get(`/:path(${available.join('|')})?`, handler);
-
 app.use(async (req, _, next) => {
     req.database = database
     req.config_secret = secret
     req.user = await parseUser(req)
-
+    
     next()
 })
 
 /* @ts-ignore */
 await loadRouters(app);
+
+app.use(handler)
 
 app.listen(5001, () => {
     console.log('[Server]: Running at http://localhost:5001');

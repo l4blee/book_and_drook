@@ -14,17 +14,14 @@ import { UserModel } from "../database.js";
 const router = Router();
 router.use(json());
 router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _a;
     let payload = req.body;
-    if (payload.password.length < 3 || payload.password.length > 20) {
-    }
-    let record = yield ((_a = req.database) === null || _a === void 0 ? void 0 : _a.users.findOne({
-        login: payload.login
-    }));
+    let record = yield req.database.users.findOne({
+        login: payload.nickname
+    });
     if (record) {
         let user = UserModel.fromRecord(record);
         if (yield user.validate(payload.password)) {
-            let token = jwt.sign({ login: payload.login }, req.config_secret);
+            let token = jwt.sign({ login: payload.nickname }, req.config_secret);
             return res
                 .cookie('token', token, { httpOnly: true })
                 .location('/')
@@ -34,32 +31,22 @@ router.post('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* 
     res.status(401).json({ message: 'unauthorized' });
 }));
 router.post('/register', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
-    var _b;
     let payload = req.body;
-    if (payload.password.length < 3 || payload.password.length > 20) {
-    }
-    let record = yield ((_b = req.database) === null || _b === void 0 ? void 0 : _b.users.findOne({
-        login: payload.login
-    }));
+    let record = yield req.database.users.findOne({
+        login: payload.nickname
+    });
     if (record)
         return res.status(409).json({ 'message': 'already exists' });
     let salt = yield genSalt();
     let hashedPwd = yield hash(payload.password, salt);
-    let user = new UserModel(payload.login, hashedPwd, salt);
-    let token = jwt.sign({ login: payload.login }, req.config_secret);
+    let user = new UserModel(payload.nickname, hashedPwd, salt);
+    let token = jwt.sign({ login: payload.nickname }, req.config_secret);
     req.database.users.insertOne(user);
     return res
         .cookie('token', token, { httpOnly: true })
         .location('/')
         .redirect('/');
 }));
-router.get('/logout', (req, res) => {
-    if (req.user)
-        res.clearCookie('token');
-    return res.
-        location('/').
-        redirect('/');
-});
 export default {
     prefix: '/auth',
     router: router

@@ -12,23 +12,19 @@ router.use(json())
 router.post('/login', async (req, res) => {
     let payload = req.body
 
-    if (payload.password.length < 3 || payload.password.length > 20) {
-        // [TODO]: server-side pwd length check
-    }
-
-    let record = await req.database?.users.findOne({
-        login: payload.login
+    let record = await req.database.users.findOne({
+        login: payload.nickname
     })
 
     if (record) {
         let user = UserModel.fromRecord(record as TUser)
         if (await user.validate(payload.password)) {
-            let token = jwt.sign({ login: payload.login }, req.config_secret)
+            let token = jwt.sign({ login: payload.nickname }, req.config_secret)
 
             return res
-                .cookie('token', token, { httpOnly: true })
-                .location('/')
-                .redirect('/')
+                   .cookie('token', token, { httpOnly: true })
+                   .location('/')
+                   .redirect('/')
         }
     }
 
@@ -38,20 +34,17 @@ router.post('/login', async (req, res) => {
 
 router.post('/register', async (req, res) => {
     let payload = req.body
-    if (payload.password.length < 3 || payload.password.length > 20) {
-        // [TODO]: server-side pwd length check
-    }
 
-    let record = await req.database?.users.findOne({
-        login: payload.login
+    let record = await req.database.users.findOne({
+        login: payload.nickname
     })
 
     if (record) return res.status(409).json({ 'message': 'already exists' })
 
     let salt = await genSalt()
     let hashedPwd = await hash(payload.password, salt)
-    let user = new UserModel(payload.login, hashedPwd, salt)
-    let token = jwt.sign({ login: payload.login }, req.config_secret)
+    let user = new UserModel(payload.nickname, hashedPwd, salt)
+    let token = jwt.sign({ login: payload.nickname }, req.config_secret)
 
     req.database.users.insertOne(user)
 
@@ -59,15 +52,6 @@ router.post('/register', async (req, res) => {
         .cookie('token', token, { httpOnly: true })
         .location('/')
         .redirect('/')
-})
-
-
-router.get('/logout', (req, res) => {
-    if (req.user) res.clearCookie('token')
-
-    return res.
-        location('/').
-        redirect('/')
 })
 
 

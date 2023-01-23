@@ -18,7 +18,7 @@ function loadRouters(app) {
         yield Promise.all(files.map((stem) => __awaiter(this, void 0, void 0, function* () {
             let module = (yield import('./routers/' + stem.slice(0, -3) + '.js')).default;
             loaded.push(stem.slice(0, -3));
-            app.use(module.prefix, module.router);
+            app.use(module.prefix || '/', module.router);
         })));
         console.log(`[Server]: Loaded ${loaded.length} routers.\n\tAvailable routers: ${loaded.join('; ')}\n`);
     });
